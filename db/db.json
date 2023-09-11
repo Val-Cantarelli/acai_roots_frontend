@@ -1,0 +1,61 @@
+{
+  "ingredients": {
+    "sizes": [
+      {
+        "id": 1,
+        "type": "350 ml"
+      },
+      {
+        "id": 2,
+        "type": "450 ml"
+      },
+      {
+        "id": 3,
+        "type": "600 ml"
+      }
+    ],
+    "typeofcups": [
+      {
+        "id": 1,
+        "type": "Açaí"
+      },
+      {
+        "id": 2,
+        "type": "Pitaya"
+      },
+      {
+        "id": 3,
+        "type": "Açaí e Pitaya"
+      }
+    ],
+    "extra_fruits": [
+      {
+        "id": 1,
+        "type": "Morango"
+      },
+      {
+        "id": 2,
+        "type": "Banana"
+      },
+      {
+        "id": 3,
+        "type": "Blackberry"
+      }
+    ]
+  },
+  "status": [
+    {
+      "id": 1,
+      "type": "Solicitado"
+    },
+    {
+      "id": 2,
+      "type": "Em produção"
+    },
+    {
+      "id": 3,
+      "type": "Finalizado"
+    }
+  ],
+  "cups": []
+}

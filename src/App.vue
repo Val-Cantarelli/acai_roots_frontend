@@ -1,30 +1,47 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div>
+    <Navbar :logo="logo_src" :alt="app_name" />
+    <div>
+      <router-view></router-view>
+    </div>
+    <Footer />
+  </div>
 </template>
 
+<script>
+import Navbar from "./components/Navbar"
+import Footer from "./components/Footer"
+export default {
+  components: {
+    Navbar,
+    Footer
+  },
+  data() {
+    return {
+      logo_src: require("./assets/logo.png"),
+      app_name: "Make your bowl"
+    }
+  }
+}
+</script>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  * {
+    font-family: "Sofia", sans-serif;
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+  }
 
-nav {
-  padding: 30px;
-}
+  .main-container {
+    margin: 50px;
+    min-height: 250px;
+  }
+  h1 {
+    text-align:center;
+    font-size: 42px;
+    margin-bottom: 30px;
+    color: #2229;
+    
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
+  }
 </style>
