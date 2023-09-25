@@ -28,7 +28,7 @@
         "type": "Açaí e Pitaya"
       }
     ],
-    "extra_fruits": [
+    "extrafruits": [
       {
         "id": 1,
         "type": "Morango"
@@ -57,5 +57,43 @@
       "type": "Finalizado"
     }
   ],
-  "cups": []
+  "orders": [
+    {
+      "user_name": "Matias",
+      "size": "450 ml",
+      "typeofcup": "Açaí",
+      "extrafruits": [
+        "Morango"
+      ],
+      "status": "Solicitado",
+      "id": 1
+    }
+  ],
+  "customers": [
+    {
+      "username": "fkmngjnejkgn",
+      "mail": "dfskgnjs@email.com",
+      "password": "4mq6@Xu7fcnC",
+      "id": 1
+    },
+    {
+      "username": "fkmngjnejkgn",
+      "mail": null,
+      "password": "4mq6@Xu7fcnC",
+      "id": 2
+    },
+    {
+      "username": "Vaaa",
+      "mail": "rdllopes@gmail.com",
+      "password": "4mq6@Xu7fcnC",
+      "id": 3
+    },
+    {
+      "id": 4,
+      "firstName": "Valdielen",
+      "lastName": "Casarin",
+      "email": "email@email.com",
+      "password": "9P7Y@VrNLUp8"
+    }
+  ]
 }

@@ -1,80 +1,85 @@
 <template>
-    <div id="acai-table">
-      <Message :msg="msg" v-show="msg"/>
-        <div>
-            <div id="acai-table-heading">
-                <div class="order-id">#:</div>
-                <div>Cliente: </div>
-                <div>Tamanho do Copo: </div>
-                <div>Fruta de base: </div>
-                <div>Frutas extras: </div>
-                <div>Ações: </div>
-            </div>
-            <div id="acai-table-rows">
-                <div class="acai-table-row" v-for="cup in cups" :key="cup.id" >
-                    <div class="order-number">{{ cup.id }}</div>
-                    <div> {{ cup.user_name }} </div>
-                    <div>{{ cup.size }}</div>
-                    <div>{{ cup.typeofcup }}</div>
-                    <div>
-                        <ul>
-                            <li v-for="(extra_fruit,index) in cup.extra_fruits" :key="index">{{extra_fruit}}</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <select name="status" class="status" @change="updateCup($event,cup.id)">
-                            <option value="">Status</option>
-                            <option v-for="s in status" :key="s.id" :value="s.type" :selected="cup.status == s.type">{{ s.type }}</option>
-                        </select>
-                        <button class="delete-btn" @click="deleteCup(cup.id)">Cancelar</button>
-                    </div>
-                </div>
-            </div>
+
+    <div id="acai-table" v-if="orders">
+      <div>
+        <div id="acai-table-heading">
+          <div class="order-id">#:</div>
+          <div>Cliente: </div>
+          <div>Tamanho do Copo: </div>
+          <div>Fruta de base: </div>
+          <div>Frutas extras: </div>
+          <div>Ações: </div>
         </div>
-    </div>
+      </div>
+
+      <div id="acai-table-rows">
+        <div class="acai-table-row" v-for="order in orders" :key="order.id" >
+          <div class="order-number">{{ order.id }}</div>
+          <div> {{ order.user_name }} </div>
+          <div>{{ order.size }}</div>
+          <div>{{ order.typeofcup }}</div>
+          <div>
+            <ul v-for="(extrafruit,index) in order.extrafruits" :key="index">
+              <li> {{ extrafruit }}</li>
+            </ul>
+          </div>
+          <div>
+            <select name="status" class="status" @change="updateCup($event,order.id)">
+              <!--<option :value="s.type">Solicitado</option>-->
+              <option :value="s.type" v-for="s in status" :key="s.id" :selected="order.status == s.type">
+                {{ s.type }}
+              </option>
+            </select>
+
+            <button class="delete-btn" @click="deleteCup(order.id)">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-else>
+    <h2>Não há pedidos no momento!</h2>
+  </div>
+           
 </template>
 
 <script>
-import Message from './Message.vue';
+
 export default {
     name: "DashboardComp",
-    components: {
-      Message
-    },
     data() {
         return {
-            cups: null,
-            acai_id: null,
-            status: null,
-            msg: null,
+          orders: null,
+          orderId: null,
+          status: []
         }
     },
     methods: {
         async getOrders() {
             //TAREFA: resgatar pedidos registrados do backend
-            // Requisição ao servidor usando a rota cups(onde eu salvei os pedidos registrados)
-            const req= await fetch("http://localhost:3000/cups");
+            // Requisição ao servidor usando a rota orders(onde eu salvei os pedidos registrados)
+            const req= await fetch("http://localhost:8080/orders");
 
             //Passar a resposta para Json e guarda em data
             const data = await req.json();
 
-            // this.cups que o template vai usar, vai ser retirado do conteúdo resposta traduzido e armazenado na variável data acima
-            this.cups = data;
+            // this.orders que o template vai usar, vai ser retirado do conteúdo resposta traduzido e armazenado na variável data acima
+            this.orders= data;
 
 
             //TAREFA: Resgatar status do backend
             this.getStatus();
         },
         async getStatus() {
-            const req= await fetch("http://localhost:3000/status");
+            const req= await fetch("http://localhost:8080/status");
             const data = await req.json(); 
             this.status = data;
             console.log(data);
+
         },
 
         async deleteCup(id) {
             //Poderia ter uma lógica na api que faria a remoção desse item
-            const req=await fetch(`http://localhost:3000/cups/${id}`,{
+            const req=await fetch(`http://localhost:8080/orders${id}`,{
                 method: "DELETE"
             });
 
@@ -90,7 +95,7 @@ export default {
 
 
             //Vai forçar a atualização dos pedidos por meio do backend. E np fim das contas terão sido feitas 3 requisições. 
-            //Alternativa à isso é fazer na mão: pegar os itens de cups, excluir o id e reproduz replicando o conteúdo do data do componente, fazendo uma requisição a menos no BE
+            //Alternativa à isso é fazer na mão: pegar os itens de orders, excluir o id e reproduz replicando o conteúdo do data do componente, fazendo uma requisição a menos no BE
             this.getOrders();
         },
         async updateCup(event,id) {
@@ -99,7 +104,7 @@ export default {
 
           const dataJson= JSON.stringify({status:option});
 
-          const req = await fetch(`http://localhost:3000/cups/${id}`,{
+          const req = await fetch(`http://localhost:8080/orders/${id}`, {
             method: "PATCH",
             headers: { "content-Type": "application/json" },
             body: dataJson

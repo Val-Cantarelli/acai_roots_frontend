@@ -6,7 +6,8 @@
         </router-link>
 
         <router-link to="/">Home</router-link> |
-        <router-link to="/Orders">Pedidos</router-link>
+        <router-link to="/Orders">Pedidos</router-link> |
+        <router-link to="/SignUpView">Cadastro/Log In</router-link>
         </div>
     </div>
 </template>

@@ -27,11 +27,11 @@
                 </select>
             </div>
 
-            <div id="optional-container" class="input-container">
-                <label id="optional-title" for="extra_fruits"> Escolha as frutas (opcional): </label>
-                <div class="checkbox-container" v-for="extra_fruit in extra_fruitdata" :key="extra_fruit.id" >
-                    <input type="checkbox" name="extra_fruits" v-model="extra_fruits" :value="extra_fruit.type">
-                    <span>{{extra_fruit.type}}</span>
+            <div id="extra-fruits-container" class="input-container">
+                <label id="extra-fruits-title" for="extrafruits"> Escolha as frutas (opcional): </label>
+                <div class="checkbox-container" v-for="extrafruit in extra_fruitdata" :key="extrafruit.id" >
+                    <input type="checkbox" name="extrafruits" v-model="extrafruits" :value="extrafruit.type">
+                    <span>{{extrafruit.type}}</span>
                 </div>
             </div>
 
@@ -59,23 +59,27 @@ export default {
             user_name: null,
             size: null,
             typeofcup: null,
-            extra_fruits: [],
-            msg: null
+            extrafruits: [],
+            msg: null,
+            //status: status.id(1)
         };
     },
     methods: {
         async getIngredients() {
             // (AJAX req) Recupera os "ingredients" que estão no banco de dados por meio do db.json
-            const req = await fetch("http://localhost:3000/ingredients");
+            const req = await fetch("http://localhost:8080/ingredients");
             const data = await req.json();
             //teste
             console.log(data);
             this.sizes = data.sizes;
             this.typeofcups = data.typeofcups;
-            this.extra_fruitdata = data.extra_fruits;
+            this.extra_fruitdata = data.extrafruits;
+
+            
         },
         // Insere informações do usuário no banco de dados. Vou usar event para que o form pare quando clicar no submit
         async createCup(e) {
+
             e.preventDefault();
             //teste
             console.log("funcionando");
@@ -83,14 +87,14 @@ export default {
                 user_name: this.user_name,
                 size: this.size,
                 typeofcup: this.typeofcup,
-                extra_fruits: Array.from(this.extra_fruits),
+                extrafruits: Array.from(this.extrafruits),
                 //O cup sempre vem como solicitado - fazer o backend fazer isso
                 status: "Solicitado"
             };
             console.log(data);
             // Os dados de data precisam estar em texto para o navegador podem entender. O backend terá de converter de novo para json para acessar esses dados
             const dataJson = JSON.stringify(data);
-            const req = await fetch("http://localhost:3000/cups", {
+            const req = await fetch("http://localhost:8080/orders", {
                 method: "POST",
                 headers: { "content-Type": "application/json" },
                 body: dataJson
@@ -108,12 +112,13 @@ export default {
             this.user_name = "";
             this.typeofcup = "";
             this.size = "";
-            this.extra_fruits= [];
+            this.extrafruits= [];
 
         },
     },
     mounted() {
         this.getIngredients();
+        
     },
     components: { Message }
 }
@@ -145,13 +150,13 @@ export default {
         width: 300px;
 
     }
-    #optional-container{
+    #extra-fruits-container{
         flex-direction: row;
         flex-wrap: wrap;
 
     }
 
-    #optional-title{ 
+    #extra-fruits-title{ 
         width: 100%;
     }
     .checkbox-container{
