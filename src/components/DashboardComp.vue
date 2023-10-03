@@ -70,7 +70,7 @@ export default {
             this.getStatus();
         },
         async getStatus() {
-            const req= await fetch("http://localhost:8080/status");
+            const req= await fetch("https://schedule-management.fly.dev/status");
             const data = await req.json(); 
             this.status = data;
             console.log(data);

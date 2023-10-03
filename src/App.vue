@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       logo_src: require("./assets/logo.png"),
-      app_name: "Make your bowl"
+      app_name: "Make your bowl now"
     }
   }
 }
