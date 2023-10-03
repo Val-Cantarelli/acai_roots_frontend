@@ -67,7 +67,7 @@ export default {
     methods: {
         async getIngredients() {
             // (AJAX req) Recupera os "ingredients" que estão no banco de dados por meio do db.json
-            const req = await fetch("http://localhost:8080/ingredients");
+            const req = await fetch(" https://schedule-management.fly.dev/ingredients");
             const data = await req.json();
             //teste
             console.log(data);
