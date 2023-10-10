@@ -1,8 +1,9 @@
 <template>
-<div class="main-container">
+<div class="main-container" v-if="orders">
     <h1> Gerenciar pedidos: </h1>
     <DashboardComp />
 </div>
+<div v-else>Não há pedidos no momento!</div>
 </template>
 
 <script>

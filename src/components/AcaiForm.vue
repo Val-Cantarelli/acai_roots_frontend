@@ -3,11 +3,11 @@
     <div>
         <Message :msg="msg" v-show="msg"/>
         <div>
-            <form id="acai-form" @submit="createCup">
+            <form id="acai-form" method= "POST" @submit="createCup">
             <div class="input-container">
-                <label for="user_name">Nome do cliente: </label>
-                <input type="text" id="user_name" name="user_name" 
-                v-model="user_name" placeholder="Digite o seu nome aqui..."/>
+                <label for="name">Nome do cliente: </label>
+                <input type="text" id="name" name="name" 
+                v-model="name" placeholder="Digite o seu nome aqui..."/>
             </div>
 
             <div class="input-container">
@@ -27,16 +27,16 @@
                 </select>
             </div>
 
-            <div id="extra-fruits-container" class="input-container">
-                <label id="extra-fruits-title" for="extrafruits"> Escolha as frutas (opcional): </label>
-                <div class="checkbox-container" v-for="extrafruit in extra_fruitdata" :key="extrafruit.id" >
+            <div id="extrafruits-container" class="input-container">
+                <label id="extrafruits-title" for="extrafruits"> Escolha as frutas (opcional): </label>
+                <div class="checkbox-container" v-for="extrafruit in extrafruits_data" :key="extrafruit.id">
                     <input type="checkbox" name="extrafruits" v-model="extrafruits" :value="extrafruit.type">
                     <span>{{extrafruit.type}}</span>
                 </div>
             </div>
 
-            <div>
-                <input type="submit" class="submit-button" value="Finalizar meu pedido">
+            <div class="input-container">
+                <input class="submit-btn" type="submit"  value="Finalizar meu pedido">
             </div>
             </form>
         </div>
@@ -55,8 +55,8 @@ export default {
         return {
             sizes: null,
             typeofcups: null,
-            extra_fruitdata: null,
-            user_name: null,
+            extrafruits_data: null,
+            name: null,
             size: null,
             typeofcup: null,
             extrafruits: [],
@@ -67,13 +67,13 @@ export default {
     methods: {
         async getIngredients() {
             // (AJAX req) Recupera os "ingredients" que estão no banco de dados por meio do db.json
-            const req = await fetch(" https://schedule-management.fly.dev/ingredients");
+            const req = await fetch("http://localhost:8080/ingredients");
             const data = await req.json();
             //teste
             console.log(data);
             this.sizes = data.sizes;
             this.typeofcups = data.typeofcups;
-            this.extra_fruitdata = data.extrafruits;
+            this.extrafruits_data = data.extrafruits;
 
             
         },
@@ -84,7 +84,7 @@ export default {
             //teste
             console.log("funcionando");
             const data = {
-                user_name: this.user_name,
+                name: this.name,
                 size: this.size,
                 typeofcup: this.typeofcup,
                 extrafruits: Array.from(this.extrafruits),
@@ -109,7 +109,7 @@ export default {
             
             //Limpar mensagem e campos do form após realização do pedido
             setTimeout(()=> this.msg = "", 3000);
-            this.user_name = "";
+            this.name = "";
             this.typeofcup = "";
             this.size = "";
             this.extrafruits= [];
@@ -150,13 +150,13 @@ export default {
         width: 300px;
 
     }
-    #extra-fruits-container{
+    #extrafruits-container{
         flex-direction: row;
         flex-wrap: wrap;
 
     }
 
-    #extra-fruits-title{ 
+    #extrafruits-title{ 
         width: 100%;
     }
     .checkbox-container{
@@ -174,7 +174,7 @@ export default {
         margin-left: 6px;
         font-weight: bold;
     }
-    .submit-button {
+    .submit-btn {
         background-color:#a58254 ;
         color:#fff;
         font-weight: bold;
@@ -185,7 +185,7 @@ export default {
         cursor: pointer;
         transition: 0.5s;
     }
-    .submit-button:hover {
+    .submit-btn:hover {
         background-color: transparent;
         color: #631452;
     }
