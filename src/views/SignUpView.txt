@@ -13,6 +13,7 @@ import SignUpForm from "@/components/SignUpForm.vue";
   export default {
     name: "SignUpView",
     components: {
+      
       SignUpForm
   }
   }

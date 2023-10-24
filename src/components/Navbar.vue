@@ -2,12 +2,12 @@
     <div>
         <div id="nav">
         <router-link to="/" id="logo-url">
-            <h1>Make your cup</h1>
+            <h1>Açaí Roots</h1>
         </router-link>
 
         <router-link to="/">Home</router-link> |
-        <router-link to="/Orders">Pedidos</router-link> |
-        <router-link to="/SignUpView">Cadastro/Log In</router-link>
+        <router-link to="/Orders">Pedidos</router-link> 
+        <!--<router-link to="/SignUpView">Cadastro/Log In</router-link>-->
         </div>
     </div>
 </template>
@@ -25,10 +25,11 @@ export default {
         background-color: #a58254;
         overflow: auto;
         border-bottom: 4px solid #631452;
-        padding: 15px 50px;
+        padding: 10px 50px;
         display: flex;
         justify-content: flex-end;
         align-items: center;
+        font-family: Courier;
     }
 
     #nav #logo-url {

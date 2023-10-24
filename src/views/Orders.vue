@@ -1,9 +1,8 @@
 <template>
-<div class="main-container" v-if="orders">
-    <h1> Gerenciar pedidos: </h1>
+<div id="main-banner">
     <DashboardComp />
 </div>
-<div v-else>Não há pedidos no momento!</div>
+
 </template>
 
 <script>
@@ -16,3 +15,17 @@ export default {
     }
 }
 </script>
+<style scoped>
+#main-banner {
+        background-position: 0 -250;
+        background-size:cover;
+        height: 500px;
+        display:flex;
+        justify-content:flex-start;
+        align-items: center;
+        
+    }  
+
+
+</style>
+

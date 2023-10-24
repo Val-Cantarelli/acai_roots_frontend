@@ -1,6 +1,6 @@
 <template>
   <footer id="footer">
-    <p> Make your bowl &copy;2023</p>
+    <p> Açaí Roots &copy;2023</p>
   </footer>
 </template>
 
@@ -13,7 +13,7 @@ export default {
 
 <style scoped>
   #footer {
-    height: 250px;
+    height: 400px;
     background-color:#53684f;
     border-top: 5px solid #410f36;
     color: #fff;
@@ -22,6 +22,7 @@ export default {
     align-items: center;
     bottom: 0;
     width: 100%;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: large;
+    
   }
 </style>

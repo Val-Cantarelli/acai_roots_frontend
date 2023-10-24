@@ -17,9 +17,9 @@ export default {
 
 <style scoped>
 .message-container {
-    color:rgb(248, 248, 253);
-    background-color: tomato;
-    border: 2px solid #868680;
+    color:#e13838;
+    background-color: #dfcbb1;
+    border: 2px solid #a4a0a3;
     border-radius: 10px;
     margin: 30px auto;
     padding: 10px;

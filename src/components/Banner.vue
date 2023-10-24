@@ -9,16 +9,20 @@ export default {
 </script>
 
 <style scoped>
-    #main-banner {
+
+    #main-banner{
         background-image: url("../assets/acai-copo.jpg");
-        background-position: 0 -250;
-        background-size:cover;
+        background-position: 20 -100px;
+        background-size: cover;
         height: 500px;
-        display:flex;
-        justify-content:flex-start;
+        display: flex;
         align-items: center;
         background-repeat: no-repeat;
-    }  
+        justify-content: flex-start;
+        
+  }
+    
+    
     #main-banner h1 {
     color: #FFF;
     text-align: center;

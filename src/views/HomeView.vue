@@ -1,7 +1,7 @@
 <template>
   <Banner />
   <div class="main-container">
-  <h1>Monte o seu açaí:</h1>
+  <h1>Monte o pedido:</h1>
   <AcaiForm />
   </div>
 </template>
@@ -20,5 +20,5 @@ export default {
 
 </script>
 
-<script setup></script>
+
 
