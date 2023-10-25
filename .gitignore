@@ -1,8 +1,9 @@
 .DS_Store
 /node_modules
 /dist
-/Login.txt
+/LoginForm.txt
 /SignUpView.txt
+/Login.txt
 
 
 
