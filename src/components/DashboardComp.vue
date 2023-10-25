@@ -31,7 +31,7 @@
         </div> 
 
 
-        <div class="order-value">Valor</div>
+        <div class="order-value">R$ {{order.totalPrice }}</div>
           <div>
             <select name="status" class="status" @change="updateCup($event,order.objectId)">
               <option :value="s.type" v-for="s in status" :key="s.objectId" :selected="order.status == s.type">
@@ -53,6 +53,7 @@
 
 export default {
     name: "DashboardComp",
+  
     data() {
         return {
           orders: [],
@@ -97,8 +98,7 @@ export default {
           });
           const res = await req.json();
           
-          this.msg=`Pedido N ${res.objectId} foi atualizado para ${res.status}!`;
-          setTimeout(()=> this.msg = "", 3000);
+          
         }
     },
     mounted() {

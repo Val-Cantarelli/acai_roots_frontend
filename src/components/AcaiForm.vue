@@ -62,7 +62,8 @@ export default {
             size: null,
             typeofcup: null,
             extrafruits: [],
-            msg: null,
+            msg: null
+            
         };
     },
     methods: {
@@ -70,44 +71,60 @@ export default {
             const req = await fetch("http://localhost:8080/ingredients");
             const data = await req.json();
             this.sizes = data.sizes;
+            this.priceBySize =  this.sizes.reduce( (map, obj) => {
+                map.set(obj.type, parseFloat(obj.price));
+                return map;
+            }, new Map());
+
             this.typeofcups = data.typeofcups;
-            this.extrafruits_data = data.extrafruits;  
+
+            this.extrafruits_data = data.extrafruits; 
+            this.priceByExtraFruits = this.extrafruits_data.reduce((map, obj)=> {
+                map.set(obj.type, parseFloat(obj.price));
+                return map;
+            },new Map());
+            
         },
         async createCup(e) {
             e.preventDefault();
+            this.totalPrice = parseFloat(this.priceBySize.get(this.size)) + parseFloat(this.extrafruits.reduce((parcialTotal,elem)=>{
+                    parcialTotal=parcialTotal + this.priceByExtraFruits.get(elem);
+                    return parcialTotal;
+                }, 0))
 
-            // Calcular o valor total do pedido
-            
             const data = {
                 name: this.name,
                 size: this.size,
                 typeofcup: this.typeofcup,
                 extrafruits: Array.from(this.extrafruits),
-                status: "Solicitado"
+                status: "Solicitado",
+
+                totalPrice: this.totalPrice.toFixed(2)
                 
             };
+            console.log(this.priceByExtraFruits);
+            console.log(this.priceBySize);
             console.log(data);
-        
+            
             const dataJson = JSON.stringify(data);
             const req = await fetch("http://localhost:8080/orders", {
                 method: "POST",
                 headers: { "content-Type": "application/json" },
                 body: dataJson
             });
-
-
             const res = await req.json();
-            console.log(res);
+            
             const orderIdentifier = res.objectId;        
             this.msg=`Pedido ${orderIdentifier.substring(orderIdentifier.length-4)} finalizado com sucesso!`;
-            
-            //Limpar mensagem e campos do form após realização do pedido
+     
             setTimeout(()=> this.msg = "", 3000);
+            
             this.name = "";
             this.typeofcup = "";
             this.size = "";
             this.extrafruits= [];   
-        }         
+        },
+
     },
     mounted() {
         this.getIngredients();
