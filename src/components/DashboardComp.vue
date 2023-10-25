@@ -63,7 +63,7 @@ export default {
     },
     methods: {
         async getOrders() {
-            const req= await fetch("http://localhost:8080/orders");
+            const req= await fetch("https://schedule-management.fly.dev/orders");
 
             const data = await req.json();
             this.orders= data;
@@ -71,7 +71,7 @@ export default {
             this.getStatus();
         },
         async getStatus() {
-            const req= await fetch("http://localhost:8080/status");
+            const req= await fetch("https://schedule-management.fly.dev/status");
             const data = await req.json(); 
             this.status = data;
         },
@@ -90,7 +90,7 @@ export default {
         async updateCup(event,objectId) {
           const option = event.target.value;
           const dataJson= JSON.stringify({status:option});
-          const req = await fetch(`http://localhost:8080/orders/${objectId}`, {
+          const req = await fetch(`https://schedule-management.fly.dev/orders/${objectId}`, {
             method: "PATCH",
             headers: { "content-Type": "application/json" },
             mode: "cors",

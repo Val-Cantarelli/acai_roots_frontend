@@ -68,7 +68,7 @@ export default {
     },
     methods: {
         async getIngredients() {
-            const req = await fetch("http://localhost:8080/ingredients");
+            const req = await fetch("https://schedule-management.fly.dev/ingredients");
             const data = await req.json();
             this.sizes = data.sizes;
             this.priceBySize =  this.sizes.reduce( (map, obj) => {
@@ -107,7 +107,7 @@ export default {
             console.log(data);
             
             const dataJson = JSON.stringify(data);
-            const req = await fetch("http://localhost:8080/orders", {
+            const req = await fetch("https://schedule-management.fly.dev/orders", {
                 method: "POST",
                 headers: { "content-Type": "application/json" },
                 body: dataJson
