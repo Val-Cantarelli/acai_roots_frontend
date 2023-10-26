@@ -1,6 +1,8 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
-  publicPath: '/acai_roots',
+  publicPath: process.env.NODE_ENV === 'production'
+  ? '/acai_roots/'
+  : '/',
   transpileDependencies: true
 
 })

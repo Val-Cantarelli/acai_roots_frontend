@@ -77,7 +77,7 @@ export default {
         },
         async deleteCup(objectId) {
           try{
-              await fetch(`http://localhost:8080/orders/${objectId}`, {
+              await fetch(`https://schedule-management.fly.dev/orders/${objectId}`, {
                 method: "DELETE"
               });
 

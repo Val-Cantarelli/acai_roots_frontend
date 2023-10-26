@@ -1,5 +1,6 @@
 <template>
   <div>
+    
     <div>
       <Navbar :logo="logo_src" :alt="app_name" />
     </div>
@@ -23,7 +24,7 @@ export default {
   data() {
     return {
       logo_src: require("./assets/logo.png"),
-      app_name: "Açaí Boost"
+      app_name: "Açaí Roots"
     }
   }
 }
