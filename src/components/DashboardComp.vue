@@ -79,6 +79,7 @@ export default {
           try{
               await fetch(`https://schedule-management.fly.dev/orders/${objectId}`, {
                 method: "DELETE"
+                
               });
 
               this.getOrders();
