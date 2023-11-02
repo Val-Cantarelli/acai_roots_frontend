@@ -34,8 +34,7 @@ export default {
     font-family: "Sofia", sans-serif;
     padding: 0;
     margin:0;
-    box-sizing: border-box;
-    
+    box-sizing: border-box; 
   }
 
   .main-container {
@@ -48,23 +47,20 @@ export default {
     margin-bottom: 30px;
     color: #2229;
   }
-  /* Adicione media queries para ajustar o layout em dispositivos móveis */
+  
 @media (max-width: 768px) {
   .main-container {
-    margin: 10px; /* Ajuste as margens para telas menores */
+    margin: 10%;
   }
 
   h1 {
-    font-size: 32px; /* Ajuste o tamanho da fonte para telas menores */
+    font-size: 32%; 
   }
 }
 
 @media (max-width: 480px) {
   h1 {
-    font-size: 24px; /* Ajuste o tamanho da fonte para telas ainda menores */
+    font-size: 24%; 
   }
 }
-
-  
-
 </style>
