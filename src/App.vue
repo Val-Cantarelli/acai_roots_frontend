@@ -48,4 +48,23 @@ export default {
     margin-bottom: 30px;
     color: #2229;
   }
+  /* Adicione media queries para ajustar o layout em dispositivos móveis */
+@media (max-width: 768px) {
+  .main-container {
+    margin: 10px; /* Ajuste as margens para telas menores */
+  }
+
+  h1 {
+    font-size: 32px; /* Ajuste o tamanho da fonte para telas menores */
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 24px; /* Ajuste o tamanho da fonte para telas ainda menores */
+  }
+}
+
+  
+
 </style>
