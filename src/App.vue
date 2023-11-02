@@ -47,20 +47,19 @@ export default {
     margin-bottom: 30px;
     color: #2229;
   }
+  @media (max-width: 768px) {
+    .main-container {
+      margin: 10%;
+    }
+    h1 {
+      font-size: 32%; 
+    }
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 24%; 
+    }
+  }
   
-@media (max-width: 768px) {
-  .main-container {
-    margin: 10%;
-  }
-
-  h1 {
-    font-size: 32%; 
-  }
-}
-
-@media (max-width: 480px) {
-  h1 {
-    font-size: 24%; 
-  }
-}
 </style>
