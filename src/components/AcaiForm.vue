@@ -199,6 +199,11 @@ export default {
         background-color: transparent;
         color: #631452;
     }
+    @media all and (max-width: 1000px) and (min-width: 700px) {
+        #acai-form {
+            margin:40%;
+        }
+    }
     
 
 </style>

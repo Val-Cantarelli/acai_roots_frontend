@@ -31,20 +31,11 @@ export default {
 </script>
 
 <style>
+
 #globalConfig {
-  
   flex-direction: column;
   min-height: 100vh;
 }
-
-* {
-  font-family: "Sofia", sans-serif;
-  
-  margin: 0;
-  box-sizing: border-box;
-  text-align: center;
-}
-
 h1 {
   text-align: center;
   font-size: 42px;
@@ -56,15 +47,15 @@ h1 {
   background-color: #e0e0e0;
   max-width: 100%;
   margin-bottom: 10px;
-  
   box-sizing: border-box;
   margin: 0 auto;
 }
 
-@media only screen and (max-width: 600px) {
+
+
+@media all and (max-width: 1000px) and (min-width: 700px) {
   .main-container {
-    width: 100%;
-    margin-bottom: 0;
+   margin:40%;
   }
 }
 </style>
