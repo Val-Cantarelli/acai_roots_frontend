@@ -16,7 +16,7 @@ export default {
         background-size: cover;
         height: 500px;
         display: flex;
-        align-items: center;
+        
         background-repeat: no-repeat;
         justify-content: flex-start;
         
@@ -29,5 +29,6 @@ export default {
     font-size: 60px;
     background-color: #222;
     padding: 20px 40px;
-  }    
+  }  
+    
 </style>

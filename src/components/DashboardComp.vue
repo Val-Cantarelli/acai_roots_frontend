@@ -43,7 +43,7 @@
       </div>
     </div>
   </div>    
-  <div id="msg" v-else>
+  <div class="noOrders" v-else>
     <h1>Não há pedidos no momento!</h1>
   </div>
 
@@ -113,6 +113,7 @@ export default {
     width: 100%;
     margin: 0 300px;  
   }  
+ 
 
   .fixed-heading {
     width: auto;

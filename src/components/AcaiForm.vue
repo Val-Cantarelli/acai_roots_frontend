@@ -137,7 +137,7 @@ export default {
 <style scoped>
     #acai-form {
     max-width: 400px;
-    margin:0 auto;
+    margin:auto;
     }
 
     .input-container{
