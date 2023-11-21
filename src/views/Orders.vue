@@ -22,8 +22,9 @@ export default {
     background-size:cover;
     height: 500px;
     display:flex;
-    justify-content:flex-start;
+    justify-content:space-around;
     align-items: center;
+    overflow:hidden;
 }  
 @media only screen and (max-width: 600%) {
     /* Estilos para telas pequenas (exemplo: smartphones) */

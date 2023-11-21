@@ -111,7 +111,7 @@ export default {
   #acai-table {
     max-width: 1300px;
     width: 100%;
-    margin: 0 300px;  
+    margin: auto;  
   }  
  
 
@@ -127,7 +127,7 @@ export default {
   } 
  
   #acai-table-rows {
-    overflow:auto;
+    overflow:scroll;
     max-width: 1500px;
     max-height: 350px;
     width: 100%;

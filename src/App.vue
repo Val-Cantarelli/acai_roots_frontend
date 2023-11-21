@@ -35,6 +35,7 @@ export default {
 #globalConfig {
   flex-direction: column;
   min-height: 100vh;
+  margin: -8px;
 }
 h1 {
   text-align: center;
@@ -46,16 +47,10 @@ h1 {
 .main-container {
   background-color: #e0e0e0;
   max-width: 100%;
-  margin-bottom: 10px;
   box-sizing: border-box;
-  margin: 0 auto;
+  
+  
 }
 
 
-
-@media all and (max-width: 1000px) and (min-width: 700px) {
-  .main-container {
-   margin:40%;
-  }
-}
 </style>

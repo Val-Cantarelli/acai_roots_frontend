@@ -137,7 +137,7 @@ export default {
 <style scoped>
     #acai-form {
     max-width: 400px;
-    margin:auto;
+    margin:0 auto;
     }
 
     .input-container{
@@ -148,7 +148,7 @@ export default {
     }
     label{
         font-weight: bold;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         color:#631452;
         padding: 5px 10px;
         border-left: 4px solid #a58254 ;
@@ -156,7 +156,7 @@ export default {
 
     }
     input,select {
-        padding: 5px 10px;
+        padding: 5px 0px;
         width: 380px;
 
     }
@@ -195,6 +195,7 @@ export default {
         cursor: pointer;
         transition: 0.5s;
     }
+    
     .submit-btn:hover {
         background-color: transparent;
         color: #631452;

@@ -15,8 +15,7 @@ export default {
         background-position: 20 -100px;
         background-size: cover;
         height: 500px;
-        display: flex;
-        
+        display: flex;     
         background-repeat: no-repeat;
         justify-content: flex-start;
         
